@@ -1,0 +1,35 @@
+<mat-form-field appearance="outline">
+    <mat-label>Suchen</mat-label>
+    <input matInput [(ngModel)]="searchText">
+    <mat-icon matPrefix>search</mat-icon>
+</mat-form-field>
+
+<div fxLayout="column" fxLayoutAlign="space-between none">
+    <ng-container [ngSwitch]="mode">
+        <ng-container *ngSwitchCase="'list'">
+        <div *ngFor="let item of filteredItems | searchFilter: searchText">
+            <ng-container *ngTemplateOutlet="listItemTemplate; context: {$implicit: item}">
+            </ng-container>
+            <hr>
+        </div>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'card'">
+            <mat-card  *ngFor="let item of filteredItems | searchFilter: searchText" class="mat-elevation-z2" fxFlexOffset="1em">
+                <mat-card-content>
+                    <ng-container *ngTemplateOutlet="listItemTemplate; context: {$implicit: item}"></ng-container>
+                </mat-card-content>
+            </mat-card>
+        </ng-container>
+    </ng-container>
+</div>
+
+<mat-paginator 
+    [length]="entryCount"
+    [pageSize]="entriesPerPage"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    [pageIndex]="currentPage"
+    aria-label="Select page"
+    (page)="pageChange($event)"
+>
+</mat-paginator>

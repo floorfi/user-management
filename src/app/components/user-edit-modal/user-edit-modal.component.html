@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>
+    Benutzer 
+    <span *ngIf="data.userID; else titleCreate">bearbeiten</span>
+    <ng-template #titleCreate>
+        erstellen
+    </ng-template>
+</h2>
+
+<app-user-data (saveCompleted)="saveCompleted()" [userID]="data.userID"></app-user-data>

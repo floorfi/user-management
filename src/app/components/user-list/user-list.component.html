@@ -1,0 +1,25 @@
+<div>
+    <mat-card class="example-card">
+        <h1>Userliste</h1>
+
+        <app-list-wrapper
+            [items]="users"
+            [mode]="mode"
+        > 
+            <ng-template let-item>
+                <app-user-list-row [user]="item"></app-user-list-row>
+            </ng-template>
+        </app-list-wrapper>
+        
+        <div style="display:flex; flex-direction: column; align-items: center; padding: 10px">
+            <span>Mode: {{ mode }}</span>
+            <button (click)="mode = mode === 'list' ? 'card' : 'list'">Switch Mode</button>
+          </div>
+
+    </mat-card>
+</div>
+<div class="floating-button">
+    <button mat-mini-fab color="primary" (click)="openAddUserModal()">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>

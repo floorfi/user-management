@@ -1,0 +1,24 @@
+<div 
+    gdAreas="name email | actions actions"
+    gdGap="1em"
+    gdColumns="50% 50%"
+    gdAreas.gt-md="name email actions"
+    gdColumns.gt-md="35% 35% auto"
+>
+    <div gdArea="name" fxFlexAlign="center">
+        {{ user.firstName }} {{ user.lastName }}
+    </div>
+    <div gdArea="email" fxFlexAlign="center">
+        {{ user.emailAddress }}
+    </div>
+    <div gdArea="actions" fxFlexAlign="center" fxLayoutAlign.gt-md="end">
+        <button mat-button color="primary" (click)="openEditUserModal(user.id)">
+            <mat-icon>edit</mat-icon>
+            Bearbeiten
+        </button>
+        <button mat-button color="warn" (click)="delete(user)">
+            <mat-icon>delete</mat-icon>
+            Löschen
+        </button>
+    </div>
+</div>

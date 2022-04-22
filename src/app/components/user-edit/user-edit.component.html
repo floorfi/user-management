@@ -1,0 +1,8 @@
+<mat-card class="example-card">
+    <h1>
+        Registrieren
+    </h1>
+    <mat-card-content>
+        <app-user-data [userID]="userID" (saveCompleted)="navigateToList()"></app-user-data>
+    </mat-card-content>
+</mat-card>

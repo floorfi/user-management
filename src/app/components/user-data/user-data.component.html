@@ -1,0 +1,63 @@
+<div>
+    <form [formGroup]="userForm" (ngSubmit)="save()">
+        <div>
+            <div fxLayout="row wrap">
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Anrede</mat-label>
+                        <input matInput formControlName="salutation">
+                        <mat-icon matSuffix>person</mat-icon>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxLayout="row wrap" fxLayoutGap="2em">
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Vorname</mat-label>
+                        <input matInput formControlName="firstName">
+                        <mat-icon matSuffix>person</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Nachname</mat-label>
+                        <input matInput formControlName="lastName">
+                        <mat-icon matSuffix>person</mat-icon>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxLayout="row wrap">
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>E-Mail-Adresse</mat-label>
+                        <input matInput formControlName="emailAddress">
+                        <mat-icon matSuffix>mail</mat-icon>
+                        <mat-error *ngIf="userForm.get('emailAddress')?.hasError('email') && !userForm.get('name')?.hasError('required')">
+                            Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="userForm.get('emailAddress')?.hasError('required')">
+                            Email is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxLayout="row wrap">
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Geburtstag</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="birthDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <button mat-button color="primary" type="submit" [disabled]="userForm.invalid">
+                <mat-icon matSuffix>save</mat-icon>
+                Speichern
+            </button>
+        </div>
+    </form>
+</div>

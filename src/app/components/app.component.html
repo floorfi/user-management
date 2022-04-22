@@ -1,0 +1,19 @@
+<ng-container>
+
+  <app-header (sidenavToggle)="sidenav.toggle()" [sidenavOpen]="sidenav.opened"></app-header>
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav class="mat-elevation-z8">
+      <app-navigation (sidenavClose)="sidenav.mode === 'over'?sidenav.close():null"></app-navigation>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<app-footer></app-footer>
+
+</ng-container>

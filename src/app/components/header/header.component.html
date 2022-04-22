@@ -1,0 +1,30 @@
+
+<mat-toolbar>
+    <button mat-icon-button (click)="onToggleSidenav()" fxHide.gt-sm>
+        <mat-icon *ngIf="!sidenavOpen">
+            menu
+        </mat-icon>
+        <mat-icon *ngIf="sidenavOpen">
+            close
+        </mat-icon>
+    </button>
+    <img id="logo" src="assets/images/logo.svg">
+    <span>UserManagement</span>
+    <span class="example-spacer"></span>
+
+    <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle</mat-icon>
+        {{ name }}
+    </button>
+    <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+        <mat-icon>manage_accounts</mat-icon>
+        <span>Einstellungen</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+    </button>
+    </mat-menu>
+</mat-toolbar>
+
